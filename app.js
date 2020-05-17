@@ -12,6 +12,7 @@ var works = require('./routes/works');
 var getWorkById = require('./routes/works');
 var changeDataWork = require('./routes/works');
 var deleteDataWork = require('./routes/works');
+var addWork = require('./routes/works');
 var callBack = require('./routes/callback');
 var clientByEmail = require('./routes/client');
 var register = require('./routes/register');
@@ -30,10 +31,10 @@ var addEntry = require('./routes/entry');
 var getEntryNoAuth = require('./routes/entryNoAuth');
 var getEntry = require('./routes/entry');
 var getEntryById = require('./routes/entry');
-var addWork = require('./routes/works');
 var addContract = require('./routes/contract');
 var getContract = require('./routes/contract');
 var getContractById = require('./routes/contract');
+var deleteDataContract = require('./routes/contract');
 
 var app = express();
 
@@ -85,6 +86,7 @@ app.use('/entry_no_auth/get', getEntryNoAuth);
 app.use('/contract/add', addContract);
 app.use('/contract', getContract);
 app.use('/contract/get_id', getContractById);
+app.use('/contract/delete', deleteDataContract);
 
 
 // catch 404 and forward to error handler

@@ -46,6 +46,7 @@ router.post('/add', function(req, res, next) {
 
 });
 
+/*GET Получение услуги по ID*/
 router.get('/get_id', function(req, res, next) {
     var id = req.get('Id');
 

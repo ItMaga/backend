@@ -102,5 +102,22 @@ router.post('/add', function(req, res, next) {
 
 });
 
+/* DELETE Удаление контракта*/
+router.delete('/delete', function(req, res, next) {
+    var id = req.get("Id");
+
+    connection.query('DELETE FROM contract WHERE id_contract = ?',
+        [id], function(error, results, fields) {
+            if (error) {
+                console.log('error');
+                return res.send(JSON.stringify({"status": 500, "error": error, "response": null}));
+            } else {
+                console.log('deleted');
+                res.send(JSON.stringify({"status": 200, "error": null, "response": results}));
+            }
+        })
+
+});
+
 
 module.exports = router;
