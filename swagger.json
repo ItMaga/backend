@@ -1,0 +1,263 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "API Автоцентра ПРИМОРСКИЙ"
+  },
+  "host": "",
+  "basePath": "/docs",
+  "tags": [
+    {
+      "name": "API"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/works": {
+      "get": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Вывод всех услуг"
+      }
+    },
+    "/works/add": {
+      "post": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Добавление услуги"
+      }
+    },
+    "/works/get_id": {
+      "get": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Получение услуги по ID"
+      }
+    },
+    "/works/change": {
+      "put": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Изменение данных услуги"
+      }
+    },
+    "/works/delete": {
+      "delete": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Удаление услуги"
+      }
+    },
+
+    "/callback": {
+      "post": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Создание заявки на обратный звонок"
+      }
+    },
+    "/callback/get": {
+      "get": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Вывод списка обратных звонков"
+      }
+    },
+
+    "/register": {
+      "post": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Регистрация нового пользователя"
+      }
+    },
+
+    "/auth": {
+      "post": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Авторизация"
+      }
+    },
+
+    "/entry_no_auth": {
+      "post": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Запись неавторизованных клиентов "
+      }
+    },
+    "/entry_no_auth/get": {
+      "get": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Вывод таблицы записей для неавторизованных клиентов"
+      }
+    },
+
+    "/user": {
+      "get": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Получение информации о клиенте по Email"
+      }
+    },
+    "/user/pass": {
+      "get": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Получение пароля пользователя"
+      }
+    },
+    "/user/reset": {
+      "put": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Восстановление пароля"
+      }
+    },
+
+    "/users_update": {
+      "put": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Изменение личных данных пользователей"
+      }
+    },
+    "/users_update/pass": {
+      "put": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Изменение пароля пользователей"
+      }
+    },
+
+    "/car": {
+      "post": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Добавление автомобиля"
+      }
+    },
+    "/car/get": {
+      "get": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Вывод автомобилей по идентификатору клиента"
+      }
+    },
+    "/car/get_id": {
+      "get": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Вывод информации об автомобилях по идентификатору автомобиля"
+      }
+    },
+    "/car/change": {
+      "put": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Изменение данных автмобиля"
+      }
+    },
+    "/car/delete": {
+      "delete": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Удаление автомобиля"
+      }
+    },
+
+    "/entry": {
+      "post": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Добавление записи авторизованного пользователя"
+      }
+    },
+    "/entry/get": {
+      "get": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Вывод записей для авторизованных клиентов"
+      }
+    },
+    "/entry/get_id": {
+      "get": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Вывод записей по идентификатору пользователя"
+      }
+    },
+
+    "/contract": {
+      "get": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Вывод контрактов"
+      }
+    },
+    "/contract/get_id": {
+      "get": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Вывод контракта по идентификатору клиента"
+      }
+    },
+    "/contract/add": {
+      "post": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Добавление контракта"
+      }
+    },
+    "/contract/delete": {
+      "delete": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Удаление контракта"
+      }
+    },
+    "/contract/change": {
+      "put": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Изменение данных контракта"
+      }
+    }
+  }
+}

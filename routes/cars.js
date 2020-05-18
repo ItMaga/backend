@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
 
-/* POST Добавить машину*/
+/* POST Добавление автомобиля*/
 router.post('/', function(req, res, next) {
     var id_client = req.body.id_client;
     var carName = req.body.carName;
@@ -48,6 +48,7 @@ router.post('/', function(req, res, next) {
 
 });
 
+/*GET Вывод автомобилей по идентификатору клиента*/
 router.get('/get', function(req, res, next) {
     var id;
     let desh = jwt.verify(req.get('Token'), 'McQfTjWmZq4t7w!z%C*F-JaNdRgUkXp2r5u8x/A?D(G+KbPeShVmYq3t6w9y$B&E');
@@ -75,7 +76,7 @@ router.get('/get', function(req, res, next) {
     });
 });
 
-/*GET Получение услуги по ID*/
+/*GET Вывод информации об автомобилях по идентификатору автомобиля*/
 router.get('/get_id', function(req, res, next) {
     var id = req.get('Id');
 

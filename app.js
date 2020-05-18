@@ -7,6 +7,8 @@ const cors = require('cors')
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var http = require('http');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
 
 var works = require('./routes/works');
 var getWorkById = require('./routes/works');
@@ -20,6 +22,7 @@ var auth = require('./routes/auth');
 var entryNoAuth = require('./routes/entryNoAuth');
 var clientUpdate = require('./routes/clientUpdate');
 var getClientPassword = require('./routes/client');
+var resetPassword = require('./routes/client');
 var passwordUpdate = require('./routes/clientUpdate');
 var addCar = require('./routes/cars');
 var getCarByIdClient = require('./routes/cars');
@@ -60,6 +63,8 @@ app.use(function(req, res, next){
   next();
 });
 
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 app.use('/works', works);
 app.use('/works/add', addWork);
 app.use('/works/get_id', getWorkById);
@@ -70,10 +75,12 @@ app.use('/callback/get', getCallBack);
 app.use('/register', register);
 app.use('/auth', auth);
 app.use('/entry_no_auth', entryNoAuth);
+app.use('/entry_no_auth/get', getEntryNoAuth);
 app.use('/user', clientByEmail);
+app.use('/user/pass', getClientPassword);
+app.use('/user/reset', resetPassword);
 app.use('/users_update', clientUpdate);
 app.use('/users_update/pass', passwordUpdate);
-app.use('/user/pass', getClientPassword);
 app.use('/car', addCar);
 app.use('/car/get', getCarByIdClient);
 app.use('/car/get_id', getCarByIdCar);
@@ -82,7 +89,6 @@ app.use('/car/delete', deleteDataCar);
 app.use('/entry', addEntry);
 app.use('/entry/get', getEntry);
 app.use('/entry/get_id', getEntryById);
-app.use('/entry_no_auth/get', getEntryNoAuth);
 app.use('/contract/add', addContract);
 app.use('/contract', getContract);
 app.use('/contract/get_id', getContractById);

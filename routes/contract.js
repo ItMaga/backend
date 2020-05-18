@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
 
-/*GET Получение контракта*/
+/*GET Вывод контракта*/
 router.get('/', function(req, res, next) {
 
     connection.query('SELECT id_contract, id_entry_contract, name, employee, dateStart, dateEnd, contract.price, status ' +
@@ -25,7 +25,7 @@ router.get('/', function(req, res, next) {
         });
 });
 
-/*GET Получение контракта по ID*/
+/*GET Вывод контракта по идентификатору клиента*/
 router.get('/get_id', function(req, res, next) {
     let tok = jwt.verify(req.get('Token'), 'McQfTjWmZq4t7w!z%C*F-JaNdRgUkXp2r5u8x/A?D(G+KbPeShVmYq3t6w9y$B&E');
     var id;
@@ -38,7 +38,6 @@ router.get('/get_id', function(req, res, next) {
                 return res.send(JSON.stringify({"status": 500, "error": error, "response": null}));
                 //If there is error, we send the error in the error section with 500 status
             } else {
-                console.log(results[0].id_client);
                 id = results[0].id_client;
                 id_id = results[0].id_client;
                 connection.query('SELECT id_contract, id_entry_contract, work.name, employee, dateStart, dateEnd, contract.price, status ' +
@@ -80,7 +79,6 @@ router.post('/add', function(req, res, next) {
         if (error) {
             return res.send(JSON.stringify({"status": 500, "error": error, "response": null}));
         } else {
-            console.log(results[0]);
             id_work_contract = results[0].id_work;
             connection.query('INSERT INTO contract SET id_entry_contract = ?, id_work_contract = ?, employee = ?,' +
                 ' dateStart = ?, dateEnd = ?, price = ?, status = ?',

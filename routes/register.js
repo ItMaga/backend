@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-/* POST */
+/* POST Регистрация нового пользователя*/
 router.post('/', function(req, res, next) {
     var email = req.body.email;
     var regData = req.body;

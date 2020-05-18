@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
 
-/* POST Запись авторизованного пользователя */
+/* POST Добавление записи авторизованного пользователя */
 router.post('/', function(req, res, next) {
     var id_client_entry = req.body.id_client_entry;
     var carName_entry = req.body.carName_entry;
@@ -40,7 +40,7 @@ router.post('/', function(req, res, next) {
 
 });
 
-/* GET Вывод таблицы записей для авторизованных клиентов */
+/* GET Вывод записей для авторизованных клиентов */
 router.get('/get', function(req, res, next) {
     connection.query('SELECT id_entry, name, lastName, carName_entry, carModel_entry, reg_number, ' +
         ' year_car, phone, date_entry FROM entry, client WHERE entry.id_client_entry = client.id_client ORDER BY id_entry desc', function (error, results, fields) {
@@ -57,7 +57,7 @@ router.get('/get', function(req, res, next) {
     });
 });
 
-/* GET Вывод таблицы записей по ID */
+/* GET Вывод записей по идентификатору пользователя */
 router.get('/get_id', function(req, res, next) {
     let tok = jwt.verify(req.get('Token'), 'McQfTjWmZq4t7w!z%C*F-JaNdRgUkXp2r5u8x/A?D(G+KbPeShVmYq3t6w9y$B&E');
     var id;

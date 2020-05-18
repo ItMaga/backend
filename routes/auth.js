@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
 
-/* POST */
+/* POST Авторизация*/
 router.post('/', function(req, res, next) {
     var email = req.body.email;
     var password = req.body.password;

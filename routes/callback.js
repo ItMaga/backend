@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-/* POST Ввод на обратный звонок*/
+/* POST Создание заявки на обратный звонок*/
 router.post('/', function(req, res, next) {
     var postData = req.body;
     connection.query('INSERT INTO call_back SET ?',
