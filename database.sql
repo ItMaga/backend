@@ -96,7 +96,7 @@ CREATE TABLE `client` (
 
 LOCK TABLES `client` WRITE;
 /*!40000 ALTER TABLE `client` DISABLE KEYS */;
-INSERT INTO `client` VALUES (1,'Магомед','Чемурзиев','Алиханович','(999) 535-25-20','m-chemurziev@ya.ru','815264Maga','client'),(2,'Глеб','Разницын',NULL,'(222) 222-22-22','gleb@gmail.com','12345678','client'),(3,'Вадим','Евтеев','Александрович','(111) 111-11-11','vadim@gmail.com','qwerty123','client'),(6,'Владислав','Корсунов','Андреевич','(888) 888-85-55','kors@mail.com','88888888','client'),(8,'Name','LastName','Father','(478) 946-55-66','test1@gmail.com','00000000','client'),(9,'Админ','Админов','Админович','(999) 155-33-12','admin@admin.ru','123admin','admin');
+INSERT INTO `client` VALUES (1,'Магомед','Чемурзиев','Алиханович','(999) 535-25-20','m-chemurziev@ya.ru','MagaMaga','client'),(2,'Глеб','Разницын',NULL,'(222) 222-22-22','gleb@gmail.com','12345678','client'),(3,'Вадим','Евтеев','Александрович','(111) 111-11-11','vadim@gmail.com','qwerty123','client'),(6,'Владислав','Корсунов','Андреевич','(888) 888-85-55','kors@mail.com','88888888','client'),(8,'Name','LastName','Father','(478) 946-55-66','test1@gmail.com','00000000','client'),(9,'Админ','Админов','Админович','(999) 155-33-12','admin@admin.ru','123admin','admin');
 /*!40000 ALTER TABLE `client` ENABLE KEYS */;
 UNLOCK TABLES;
 

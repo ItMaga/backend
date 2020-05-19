@@ -36,8 +36,10 @@ var getEntry = require('./routes/entry');
 var getEntryById = require('./routes/entry');
 var addContract = require('./routes/contract');
 var getContract = require('./routes/contract');
-var getContractById = require('./routes/contract');
+var getContractByIdClient = require('./routes/contract');
 var deleteDataContract = require('./routes/contract');
+var getContractByIdContract = require('./routes/contract');
+var changeDataContract = require('./routes/contract');
 
 var app = express();
 
@@ -91,8 +93,10 @@ app.use('/entry/get', getEntry);
 app.use('/entry/get_id', getEntryById);
 app.use('/contract/add', addContract);
 app.use('/contract', getContract);
-app.use('/contract/get_id', getContractById);
+app.use('/contract/get', getContractByIdContract);
+app.use('/contract/get_id', getContractByIdClient);
 app.use('/contract/delete', deleteDataContract);
+app.use('/contract/change', changeDataContract);
 
 
 // catch 404 and forward to error handler
