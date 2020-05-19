@@ -108,8 +108,20 @@ router.put('/change', function(req, res, next) {
                 console.log('error');
                 return res.send(JSON.stringify({"status": 500, "error": error, "response": null}));
             } else {
-                console.log('success');
-                res.send(JSON.stringify({"status": 200, "error": null, "response": results}));
+                connection.query('SELECT * FROM car WHERE regNumber = ?',
+                    [regNumber], function(error, results, fields) {
+                        if (error) {
+                            console.log('error');
+                            return res.send(JSON.stringify({"status": 500, "error": error, "response": null}));
+                        } else {
+                            if(results.length > 1){
+                                return res.send(JSON.stringify({"status": 510, "error": error, "response": null}));
+                            } else {
+                                console.log('success');
+                                res.send(JSON.stringify({"status": 200, "error": null, "response": results}));
+                            }
+                        }
+                    })
             }
         })
 

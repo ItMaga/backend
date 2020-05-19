@@ -70,28 +70,30 @@ router.put('/change', function(req, res, next) {
     var price = req.body.price;
     var timeFrame = req.body.timeFrame;
 
-    connection.query('SELECT * FROM work WHERE name = ?',
-        [name], function(error, results, fields) {
+    connection.query('UPDATE autoservice.work SET name = ?, price = ?, timeFrame = ? WHERE id_work = ?',
+        [name, price, timeFrame, id], function(error, results, fields) {
             if (error) {
                 console.log('error');
                 return res.send(JSON.stringify({"status": 500, "error": error, "response": null}));
             } else {
-                if(results.length > 0){
-                    return res.send(JSON.stringify({"status": 510, "error": error, "response": null}));
-                } else {
-                    connection.query('UPDATE autoservice.work SET name = ?, price = ?, timeFrame = ? WHERE id_work = ?',
-                        [name, price, timeFrame, id], function(error, results, fields) {
-                            if (error) {
-                                console.log('error');
-                                return res.send(JSON.stringify({"status": 500, "error": error, "response": null}));
+                connection.query('SELECT * FROM work WHERE name = ?',
+                    [name], function(error, results, fields) {
+                        if (error) {
+                            console.log('error');
+                            return res.send(JSON.stringify({"status": 500, "error": error, "response": null}));
+                        } else {
+                            if(results.length > 1){
+                                return res.send(JSON.stringify({"status": 510, "error": error, "response": null}));
                             } else {
                                 console.log('success');
                                 res.send(JSON.stringify({"status": 200, "error": null, "response": results}));
                             }
-                        })
-                }
+                        }
+                    })
             }
         })
+
+
 
 });
 
