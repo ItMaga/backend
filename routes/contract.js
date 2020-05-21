@@ -135,6 +135,9 @@ router.post('/add', function(req, res, next) {
     var price = req.body.price;
     var status = req.body.status;
 
+    if(price === '') price = null;
+    if(dateEnd === '') dateEnd = null;
+
     connection.query('SELECT id_work FROM work WHERE name =  ?', work, function(error, results, fields) {
         if (error) {
             return res.send(JSON.stringify({"status": 500, "error": error, "response": null}));
@@ -142,18 +145,19 @@ router.post('/add', function(req, res, next) {
             id_work_contract = results[0].id_work;
             connection.query('INSERT INTO contract SET id_entry_contract = ?, id_work_contract = ?, employee = ?,' +
                 ' dateStart = ?, dateEnd = ?, price = ?, status = ?',
-                [id_entry_contract,id_work_contract,employee,dateStart,dateEnd,price,status],
+                [id_entry_contract, id_work_contract, employee, dateStart, dateEnd, price, status],
                 function (error, results, fields) {
-                    if (error) {
-                        console.log('error 2');
-                        res.send(JSON.stringify({"status": 500, "error": error, "response": null}));
-                        //If there is error, we send the error in the error section with 500 status
-                    } else {
-                        console.log(results.insertId);
-                        res.end(JSON.stringify({"status": 200, "error": null, "response": results}));
-                        //If there is no error, all is good and response is 200OK.
-                    }
-                });
+                if (error) {
+                    console.log('error 2');
+                    console.log(error);
+                    res.send(JSON.stringify({"status": 500, "error": error, "response": null}));
+                    //If there is error, we send the error in the error section with 500 status
+                } else {
+                    console.log(results.insertId);
+                    res.end(JSON.stringify({"status": 200, "error": null, "response": results}));
+                    //If there is no error, all is good and response is 200OK.
+                }
+            });
         }
     });
 
