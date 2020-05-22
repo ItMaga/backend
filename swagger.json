@@ -75,6 +75,14 @@
         "summary": "Вывод списка обратных звонков"
       }
     },
+    "/callback/change": {
+      "put": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Изменение отметки звонков"
+      }
+    },
 
     "/register": {
       "post": {
