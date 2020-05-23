@@ -10,6 +10,7 @@ router.post('/', function(req, res, next) {
     var reg_number = req.body.reg_number;
     var year_car = req.body.year_car;
     var date_entry = req.body.date_entry;
+    var markEntry = req.body.markEntry;
 
     let desh = jwt.verify(req.get('Token'), 'McQfTjWmZq4t7w!z%C*F-JaNdRgUkXp2r5u8x/A?D(G+KbPeShVmYq3t6w9y$B&E');
 
@@ -22,8 +23,8 @@ router.post('/', function(req, res, next) {
         } else {
             id_client_entry = results[0].id_client;
             connection.query('INSERT INTO entry SET id_client_entry = ?, carName_entry = ?, carModel_entry = ?,' +
-                ' reg_number = ?, year_car = ?, date_entry = ?',
-                [id_client_entry, carName_entry, carModel_entry, reg_number, year_car, date_entry],
+                ' reg_number = ?, year_car = ?, date_entry = ?, markEntry = ?',
+                [id_client_entry, carName_entry, carModel_entry, reg_number, year_car, date_entry, markEntry],
                 function (error, results, fields) {
                 if(error){
                     console.log('error 2');
@@ -43,7 +44,7 @@ router.post('/', function(req, res, next) {
 /* GET Вывод записей для авторизованных клиентов */
 router.get('/get', function(req, res, next) {
     connection.query('SELECT id_entry, name, lastName, carName_entry, carModel_entry, reg_number, ' +
-        ' year_car, phone, date_entry FROM entry, client WHERE entry.id_client_entry = client.id_client ORDER BY id_entry desc', function (error, results, fields) {
+        ' year_car, phone, date_entry, markEntry FROM entry, client WHERE entry.id_client_entry = client.id_client ORDER BY id_entry desc', function (error, results, fields) {
         if(error){
             res.send(JSON.stringify({"status": 500, "error": error, "response": null}));
             //If there is error, we send the error in the error section with 500 status
@@ -85,6 +86,25 @@ router.get('/get_id', function(req, res, next) {
                 });
             }
         });
+
+});
+
+/* PUT Изменение отметки записи*/
+router.put('/change', function(req, res, next) {
+    var id = req.get("Id");
+
+    var mark = req.body.markEntry;
+
+    connection.query('UPDATE entry SET entry.markEntry = ? WHERE id_entry = ?',
+        [mark, id], function(error, results, fields) {
+            if (error) {
+                console.log('error');
+                return res.send(JSON.stringify({"status": 500, "error": error, "response": null}));
+            } else {
+                console.log('success');
+                res.send(JSON.stringify({"status": 200, "error": null, "response": results}));
+            }
+        })
 
 });
 

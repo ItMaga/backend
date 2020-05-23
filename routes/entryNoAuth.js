@@ -34,5 +34,24 @@ router.get('/get', function(req, res, next) {
     });
 });
 
+/* PUT Изменение отметки записи*/
+router.put('/change', function(req, res, next) {
+    var id = req.get("Id");
+
+    var mark = req.body.mark;
+
+    connection.query('UPDATE entry_no_auth SET entry_no_auth.mark = ? WHERE id_entry_no_auth = ?',
+        [mark, id], function(error, results, fields) {
+            if (error) {
+                console.log('error');
+                return res.send(JSON.stringify({"status": 500, "error": error, "response": null}));
+            } else {
+                console.log('success');
+                res.send(JSON.stringify({"status": 200, "error": null, "response": results}));
+            }
+        })
+
+});
+
 
 module.exports = router;
