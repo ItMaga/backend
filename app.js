@@ -61,8 +61,8 @@ app.use(function(req, res, next){
   global.connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
-    password: '815264',
-    database : 'autoservice',
+    password: '*******',
+    database : '********',
   });
   connection.connect();
   next();
