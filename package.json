@@ -17,7 +17,7 @@
     "mysql": "^2.18.1",
     "nodemailer": "^6.4.6",
     "password-generator": "^2.2.3",
-    "pug": "2.0.0-beta11",
+    "pug": "3.0.1",
     "swagger-ui-express": "^4.1.4"
   }
 }
